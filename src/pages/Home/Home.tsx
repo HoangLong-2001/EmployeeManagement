@@ -32,7 +32,11 @@ export default function Home() {
     {
       title: 'Name',
       dataIndex: 'name',
-      key: 'name'
+      key: 'name',
+      sortOrder:'ascend',
+      sorter(a, b) {
+        return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+      }
     },
     {
       title: 'Age',
@@ -81,7 +85,7 @@ export default function Home() {
 
   return (
     <div className='h-screen w-full bg-white/80 px-24 py-10'>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={data}/>
       <Modal />
     </div>
   )
